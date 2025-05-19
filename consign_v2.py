@@ -17,6 +17,7 @@ if uploaded_file:
         heure_cols = ["Heures jour", "Heures nuit", "Heures dimanche", "Heures supp", "Heures Férié", "Total (h)"]
         for col in heure_cols:
             df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
+            df[col] = df[col].round(2)
 
         st.subheader("📋 Aperçu du tableau")
         st.dataframe(df.style.background_gradient(cmap='Blues', subset=["Total (h)"]))
